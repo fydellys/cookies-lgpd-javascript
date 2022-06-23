@@ -1,0 +1,55 @@
+<style>
+.box-cookies.hide {
+  display: none !important;
+}
+
+.box-cookies {
+    position: fixed;
+    background: #26272c;
+    width: 100%;
+    z-index: 996;
+    bottom: 0px;
+    display: flex;
+    display: block;
+}
+
+.box-cookies .msg-cookies,
+.box-cookies .btn-cookies {
+  text-align: center;
+  padding: 20px 40px 20px;
+  color: #FFF;
+}
+
+.box-cookies .btn-cookies {
+  background: #ffaa17;
+  cursor: pointer; 
+  padding: revert;
+ 
+}
+
+@media screen and (max-width: 600px) {
+  .box-cookies {
+    flex-direction: column;
+  }
+}
+</style>
+<div class="box-cookies hide" style="align-content: center;">
+   <p class="msg-cookies">Esse site utiliza cookies para oferecer uma melhor experiência de navegação, analisar como você interage em nosso site, otimizar o desempenho e personalizar o conteúdo. Ao utilizar este site, você concorda com o uso de cookies.
+   &nbsp;&nbsp;<button class="btn-cookies" style="color: #26272c;">&nbsp;&nbsp;OK&nbsp;&nbsp;</button></p>
+</div>
+<script>
+(() => {
+  if (!localStorage.pureJavaScriptCookies) {
+    document.querySelector(".box-cookies").classList.remove('hide');
+  }
+  
+  const acceptCookies = () => {
+    document.querySelector(".box-cookies").classList.add('hide');
+    localStorage.setItem("pureJavaScriptCookies", "accept");
+  };
+  
+  const btnCookies = document.querySelector(".btn-cookies");
+  
+  btnCookies.addEventListener('click', acceptCookies);
+})();
+</script>
